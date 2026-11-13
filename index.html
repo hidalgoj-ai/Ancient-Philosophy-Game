@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<meta content="#f3f5f6" name="theme-color"/>
+<meta content="Ancient Philosophy as a Way of Life is a classroom role-playing game set at the court of King Menander, where Stoics, Epicureans, Buddhists, and Skeptics debate how to live well." name="description"/>
+<title>Ancient Philosophy as a Way of Life — King Menander’s Court</title>
+<style>
+    :root { --ink:#282d2b;--ink-soft:#535950;--mute:#72776e;--paper:#f7f4ed;--paper-dark:#efebe2;--white:#fffdf9;--hair:#d6d1c6;--terra:#96543d;--terra-dark:#773d2c;--sage:#3e5149;--bronze:#947653; --max:1190px; }
+    *,*:before,*:after {box-sizing:border-box}
+    html {scroll-behavior:smooth;scroll-padding-top:110px}
+    body {margin:0;background:var(--paper);color:var(--ink);font-family: "Helvetica Neue",Arial,system-ui,sans-serif;font-size:16px;line-height:1.6; -webkit-font-smoothing:antialiased}
+    a {color:inherit;text-underline-offset:4px}
+    a:focus-visible,button:focus-visible,summary:focus-visible{outline:3px solid var(--terra);outline-offset:4px}
+    img {display:block;max-width:100%}
+    button {font:inherit}
+    .container {max-width:var(--max);margin:auto;padding-left:40px;padding-right:40px}
+    .eyebrow {font-size:11px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--terra)}
+    .serif{font-family:Georgia,"Iowan Old Style","Baskerville",serif;font-weight:400;letter-spacing:-.027em}
+    .topline {background:var(--top-bg);color:var(--top-text);font-size:10px;letter-spacing:.17em;text-transform:uppercase;text-align:center;padding:9px 15px}
+    .skip-link{position:absolute;z-index:60;top:-100px;left:20px;padding:10px;background:var(--white)}.skip-link:focus{top:14px}
+    .header {position:sticky;top:0;z-index:30;backdrop-filter:blur(14px);background:var(--header-bg);border-bottom:1px solid var(--hair)}
+    .header-inner{height:84px;display:flex;align-items:center;justify-content:space-between;gap:26px}
+    .brand{text-decoration:none;display:flex;align-items:center;gap:15px;min-width:0}
+    .brand-symbol {height:38px;width:38px;display:grid;place-items:center;border:1px solid var(--symbol-border);border-radius:50%;font:italic 21px Georgia,serif;color:var(--terra)}
+    .brand-copy{font-family:Georgia,serif;font-size:18px;line-height:1.05;letter-spacing:-.02em}
+    .brand-copy small{display:block;font:600 9px Arial,sans-serif;letter-spacing:.18em;text-transform:uppercase;color:var(--mute);margin-top:6px}
+    .nav {display:flex;align-items:center;gap:29px}
+    .nav a {font-size:12px;letter-spacing:.025em;font-weight:650;text-decoration:none;position:relative;white-space:nowrap}
+    .nav a::after {content:"";height:1px;width:0;background:var(--terra);position:absolute;bottom:-10px;left:0;transition:width .2s ease}
+    .nav a:hover::after,.nav a.active::after{width:100%}
+    .nav .nav-feature{color:var(--terra)}
+    .menu-toggle{display:none;border:1px solid var(--hair);background:none;border-radius:2px;padding:7px 11px;color:var(--ink);cursor:pointer}
+    .hero {padding-top:61px;padding-bottom:87px}
+    .hero-inner{display:grid;grid-template-columns: .93fr 1.07fr;gap:53px;align-items:center}
+    .hero-copy{padding-top:24px;padding-bottom:25px}
+    .hero h1{font:normal clamp(58px,5.3vw,82px)/1.03 Georgia,"Iowan Old Style",serif;letter-spacing:-.058em;margin:23px 0 26px;max-width:550px}
+    .hero h1 em{font-weight:400;color:var(--terra);font-style:italic}
+    .hero-sub{font:normal clamp(19px,1.7vw,24px)/1.52 Georgia,serif;letter-spacing:-.012em;color:var(--ink-soft);max-width:515px;margin:0 0 23px}
+    .hero-note{color:var(--ink-soft);max-width:510px;font-size:14px;line-height:1.7}
+    .actions{display:flex;gap:22px;align-items:center;flex-wrap:wrap;margin-top:34px}
+    .button{font-size:12px;letter-spacing:.035em;text-decoration:none;display:inline-flex;gap:14px;align-items:center;justify-content:center;padding:13px 21px;min-height:46px;border:1px solid var(--sage);transition:background .2s ease,color .2s ease;white-space:nowrap}
+    .button-primary{background:var(--sage);color:var(--button-ink)}.button-primary:hover{background:var(--sage-hover)}
+    .text-link{font-size:12px;font-weight:700;text-decoration:none;border-bottom:1px solid var(--accent-line);padding-bottom:4px}.text-link:hover{color:var(--terra)}
+    .hero-media{display:grid;grid-template-columns:1.12fr .79fr;gap:11px;align-items:stretch;position:relative}
+    .image-frame{position:relative;overflow:hidden;background:var(--image-ground)}
+    .image-frame img{width:100%;height:100%;object-fit:cover;transition:transform .75s cubic-bezier(.2,.5,.3,1)}
+    .image-frame:hover img{transform:scale(1.025)}
+    .hero-main{height:517px}.hero-main img{object-position:51% 45%}
+    .hero-side{height:444px;align-self:end;}
+    .hero-side img{object-position:33% 55%}
+    .hero-caption{font-size:10px;letter-spacing:.02em;color:var(--mute);grid-column:1/-1;margin:7px 0 0;line-height:1.5}
+    .hero-coin {position:absolute;bottom:56px;left:-37px;width:116px;height:93px;background:var(--paper);padding:9px;box-shadow:0 8px 24px #2222;border:1px solid var(--hair)}
+    .hero-coin img{width:100%;height:100%;object-fit:contain;mix-blend-mode:multiply}
+    .editorial-strip{border-top:1px solid var(--hair);border-bottom:1px solid var(--hair);padding:26px 0}
+    .strip-inner{display:flex;justify-content:space-between;gap:20px;align-items:center}
+    .strip-inner span{font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-soft);font-weight:700}
+    .strip-inner .dot{color:var(--terra);font-weight:400}
+    .section{padding-top:104px;padding-bottom:106px}
+    .section-heading {max-width:775px;margin-bottom:46px}
+    .section-heading h2{font:normal clamp(39px,4vw,58px)/1.16 Georgia,serif;letter-spacing:-.045em;margin:18px 0 19px}
+    .section-heading p{font-size:17px;line-height:1.75;color:var(--ink-soft);margin:0;max-width:690px}
+    .thesis{display:grid;grid-template-columns:1.2fr .8fr;gap:90px;align-items:start}
+    .thesis .section-heading{margin-bottom:0}
+    .thesis-quote{border-left:1px solid var(--terra);margin-top:20px;padding-left:28px}
+    .thesis-quote blockquote{margin:0;font:italic 28px/1.4 Georgia,serif;letter-spacing:-.022em}
+    .thesis-quote cite{font-size:12px;color:var(--mute);display:block;font-style:normal;margin-top:22px}
+    .panel{background:var(--paper-dark)}
+    .schools-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:17px}
+    .school{background:var(--white);border:1px solid var(--hair);display:flex;flex-direction:column;transition:box-shadow .2s ease}
+    .school:hover {box-shadow:0 12px 30px #2d23160e}
+    .school-image{height:227px;background:var(--image-ground);overflow:hidden;}
+    .school-image img{height:100%;width:100%;object-fit:cover}
+    .school:nth-child(1) img{object-position:center 25%}
+    .school:nth-child(2) img{object-position:center 18%}
+    .school:nth-child(3) img{object-position:center 50%}
+    .school:nth-child(4) img{object-position:center 18%}
+    .school-body{padding:21px 20px 20px;flex:1;display:flex;flex-direction:column;min-height:273px}
+    .school-index{font-size:10px;letter-spacing:.14em;color:var(--terra);font-weight:700;text-transform:uppercase}
+    .school h3{font:normal 29px/1.2 Georgia,serif;letter-spacing:-.035em;margin:12px 0 11px}
+    .school-question{font:italic 16px/1.48 Georgia,serif;color:var(--ink-soft);margin:0}
+    .school-summ{font-size:13px;line-height:1.65;color:var(--ink-soft);margin:15px 0 20px}
+    .school details{margin-top:auto;border-top:1px solid var(--hair);padding-top:12px}
+    .school summary{list-style:none;font-weight:700;font-size:12px;color:var(--terra);cursor:pointer;display:flex;justify-content:space-between;align-items:center}
+    .school summary::-webkit-details-marker{display:none}
+    .school summary::after{content:"+";font-size:21px;font-weight:400}.school details[open] summary::after{content:"−"}
+    .school .expand-body{font-size:12.5px;color:var(--ink-soft);line-height:1.65;padding-top:15px}
+    .school .expand-body p{margin:0 0 10px}.school .expand-body p:last-child{margin-bottom:0}
+    .art-credit{font-size:11px;color:var(--mute);margin-top:22px;line-height:1.6}
+    .art-credit a{color:var(--ink-soft)}
+    .setting{display:grid;grid-template-columns:.92fr 1.08fr;gap:100px;align-items:center}
+    .coin-figure{background:var(--paper-dark);padding:36px 25px 23px;border:1px solid var(--hair);margin:0}
+    .coin-figure img{max-width:100%;width:470px;margin:auto;mix-blend-mode:multiply;image-rendering:auto}
+    .coin-figure figcaption{text-align:center;font-size:11px;color:var(--mute);margin-top:27px}
+    .setting p{font-size:16px;line-height:1.8;color:var(--ink-soft)}
+    .history-note{border-top:1px solid var(--hair);margin-top:24px;padding-top:19px;font-size:13px;color:var(--ink-soft);line-height:1.7}
+    .history-note strong{color:var(--ink)}
+    .timeline{display:grid;grid-template-columns:repeat(4,1fr);gap:0;margin-top:55px;border-top:1px solid var(--hair)}
+    .step{padding:25px 27px 12px 0;border-right:1px solid var(--hair);margin-right:27px}
+    .step:last-child{border-right:none;margin-right:0}
+    .step-num{font:normal 37px Georgia,serif;color:var(--bronze)}
+    .step h3{font:normal 24px Georgia,serif;letter-spacing:-.02em;margin:17px 0 11px}
+    .step p{font-size:14px;line-height:1.75;color:var(--ink-soft);margin:0}
+    .game-statement{margin-top:54px;border-top:1px solid var(--hair);display:flex;gap:25px;align-items:center;padding-top:24px}
+    .game-statement span{font-size:11px;text-transform:uppercase;font-weight:700;letter-spacing:.12em;color:var(--terra);min-width:135px}
+    .game-statement p{color:var(--ink-soft);font-size:14px;margin:0;line-height:1.7}
+    .materials{background:var(--materials-bg);color:var(--materials-text)}
+    .materials .eyebrow{color:var(--materials-accent)}.materials .section-heading p{color:var(--materials-soft)}
+    .materials-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:15px;margin-top:44px}
+    .resource{border:1px solid var(--materials-border);padding:26px 28px;display:flex;justify-content:space-between;gap:20px;align-items:start}
+    .resource h3{font:normal 24px Georgia,serif;margin:4px 0 10px}
+    .resource p{font-size:13px;color:var(--materials-soft);line-height:1.6;margin:0;max-width:360px}
+    .resource-status{white-space:nowrap;color:var(--materials-soft);border:1px solid var(--materials-border);padding:5px 9px;font-size:9px;letter-spacing:.13em;text-transform:uppercase}
+    .materials-note{font-size:12px;line-height:1.6;color:var(--materials-soft);max-width:725px;margin-top:23px}
+    .reacting-credit{margin-top:22px;padding-left:19px;border-left:2px solid var(--bronze)}
+    .reacting-credit a,.footer-note a{color:var(--terra-dark);text-decoration:underline;text-underline-offset:3px}
+    .about-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:100px}
+    .about-grid p{line-height:1.75;color:var(--ink-soft)}
+    .credits{border-left:1px solid var(--hair);padding-left:50px}
+    .credits h3{font:normal 26px Georgia,serif;margin:0 0 17px}
+    .credits p{font-size:13px;line-height:1.7;margin:0 0 12px}
+    .credits-list{font-size:12px;line-height:1.9;color:var(--ink-soft);padding-left:19px;margin:13px 0 0}
+    .credits-list li{padding-left:2px;margin-bottom:5px}
+    .credits-list a{color:var(--ink-soft)}
+    .footer{border-top:1px solid var(--hair);padding:29px 0 43px}
+    .footer-inner{display:flex;justify-content:space-between;gap:30px;align-items:start}
+    .footer-title{font:normal 20px/1.2 Georgia,serif}.footer-note{font-size:11px;color:var(--mute);max-width:370px;text-align:right}
+    .reveal{opacity:1}
+    @media (max-width:1070px){.nav{gap:19px}.hero-inner{gap:35px}.hero-main{height:460px}.hero-side{height:385px}.schools-grid{grid-template-columns:repeat(2,1fr)}.school-image{height:300px}.school-body{min-height:235px}.setting{gap:55px}.about-grid{gap:52px}.credits{padding-left:32px}}
+    @media (max-width:760px){.container{padding-left:22px;padding-right:22px}.header-inner{height:75px}.brand-copy{font-size:16px}.brand-symbol{height:34px;width:34px}.menu-toggle{display:block}.nav{display:none;position:absolute;top:74px;left:0;right:0;background:var(--paper);padding:22px;flex-direction:column;gap:17px;align-items:flex-start;border-bottom:1px solid var(--hair);box-shadow:0 12px 25px #0001}.nav.open{display:flex}.nav a{font-size:15px}.hero{padding-top:34px;padding-bottom:59px}.hero-inner{display:block}.hero h1{font-size:clamp(48px,11vw,70px);max-width:620px;margin:16px 0 18px}.hero-copy{padding:0 0 30px}.hero-sub{font-size:19px}.hero-media{gap:8px}.hero-main{height:430px}.hero-side{height:350px}.hero-coin{left:8px;bottom:54px;width:93px;height:75px}.strip-inner{flex-wrap:wrap;justify-content:center;gap:9px 13px}.strip-inner span{font-size:10px}.section{padding-top:68px;padding-bottom:73px}.section-heading{margin-bottom:35px}.section-heading h2{font-size:clamp(34px,7vw,48px)}.section-heading p{font-size:16px}.thesis,.setting,.about-grid{grid-template-columns:1fr;gap:24px}.thesis-quote{max-width:550px}.schools-grid{gap:15px}.timeline{grid-template-columns:repeat(2,1fr);row-gap:24px}.step:nth-child(2){border-right:0}.materials-grid{gap:12px}.credits{border-left:0;border-top:1px solid var(--hair);padding:28px 0 0}.game-statement{display:block}.game-statement p{margin-top:8px}}
+    @media (max-width:520px){.topline{font-size:9px;letter-spacing:.12em}.hero-main{height:320px}.hero-side{height:258px}.hero-caption{font-size:9px}.schools-grid,.materials-grid{grid-template-columns:1fr}.school-image{height:270px}.school-body{min-height:auto}.school details{margin-top:25px}.timeline{grid-template-columns:1fr}.step,.step:nth-child(2){border-right:0;border-bottom:1px solid var(--hair);padding:10px 0 24px;margin:0}.step:last-child{border-bottom:none}.resource{padding:20px 19px}.resource h3{font-size:22px}.footer-inner{display:block}.footer-note{text-align:left;margin-top:14px}}
+    @media (prefers-reduced-motion: reduce){html{scroll-behavior:auto}*,*:before,*:after{transition:none!important}}
+
+    /* Visible, clickable museum-label fallback when an external photograph is blocked. */
+    .photo-fallback{width:100%;height:100%;min-height:160px;padding:16px;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;gap:9px;background:var(--paper-dark);color:var(--ink);text-decoration:none;border:1px solid var(--hair)}
+    .photo-fallback:hover{background:var(--white);color:var(--terra-dark)}
+    .photo-fallback .fallback-icon{font:normal 32px Georgia,serif;color:var(--bronze)}
+    .photo-fallback .fallback-title{font:normal 18px/1.2 Georgia,serif}
+    .photo-fallback .fallback-note{font-size:11px;line-height:1.35;color:var(--ink-soft);max-width:22em}
+    .hero-coin .photo-fallback{min-height:0;padding:2px;gap:0}
+    .hero-coin .photo-fallback .fallback-icon,.hero-coin .photo-fallback .fallback-note{display:none}
+    .hero-coin .photo-fallback .fallback-title{font-size:10px}
+    .coin-figure .photo-fallback{max-width:420px;height:210px;margin:auto}
+  
+    /* Revised with author-supplied historical photographs */
+    .hero-main img {object-position:50% 32%;}
+    .hero-side img {object-position:53% 48%;}
+    .school:nth-child(1) img {object-position:center 28%;}
+    .school:nth-child(2) img {object-position:center 30%;}
+    .school:nth-child(3) img {object-position:center 35%;}
+    .school:nth-child(4) img {object-position:center 43%;}
+    .coin-figure img {max-height:470px;width:auto;object-fit:contain;mix-blend-mode:normal;}
+    .coin-figure {background:var(--coin-ground);padding:24px 22px 21px;}
+    .hero-media {grid-template-columns: .84fr 1.06fr;gap:11px;}
+    .hero-side{height:350px;}
+    @media(max-width:760px){.hero-side{height:290px}.hero-main{height:400px}.hero-media{grid-template-columns:.88fr 1.12fr}}
+
+    /* Further reading: compact editorial library, no external widgets or image dependencies */
+    .further-reading {background:var(--white);border-top:1px solid var(--hair);}
+    .further-grid {display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:25px;align-items:stretch}
+    .further-card {border:1px solid var(--hair);background:var(--reading-card);padding:30px 33px 27px;scroll-margin-top:110px;}
+    .further-card-heading {border-bottom:1px solid var(--hair);padding-bottom:13px;margin-bottom:16px}
+    .further-card-heading h3 {font:normal 34px/1.12 Georgia,serif;letter-spacing:-.035em;margin:8px 0 0}
+    .further-group + .further-group {margin-top:22px}
+    .further-group h4 {font-size:10px;font-weight:700;color:var(--terra);letter-spacing:.15em;text-transform:uppercase;margin:0 0 9px}
+    .further-group ul {list-style:none;margin:0;padding:0}
+    .further-group li {margin:0 0 11px;padding:0}
+    .further-group li:last-child {margin-bottom:0}
+    .further-group li a {color:var(--ink);font-size:14px;font-weight:700;text-decoration-thickness:1px;text-decoration-color:var(--accent-line);text-underline-offset:4px;line-height:1.5}
+    .further-group li a:hover {color:var(--terra-dark);text-decoration-color:currentColor}
+    .further-group li a span {font-weight:400;color:var(--terra)}
+    .further-group li p {margin:5px 0 0;font-size:12px;color:var(--ink-soft);line-height:1.55}
+    .further-note {max-width:840px;font-size:12px;color:var(--mute);line-height:1.75;margin:24px 0 0}
+    .school .expand-body .school-resources-link {margin-top:17px;border-top:1px solid var(--hair);padding-top:12px;font-weight:700}
+    .school-resources-link a {color:var(--terra-dark);font-size:12.5px}
+    @media(max-width:1050px){.nav{gap:14px}.nav a{font-size:11px}.further-card{padding:24px}}
+    @media(max-width:760px){.nav{gap:17px}.nav a{font-size:15px}.further-grid{grid-template-columns:1fr;gap:15px}}
+    @media(max-width:520px){.further-card{padding:22px}.further-card-heading h3{font-size:30px}}
+    /* Fixed Slate & Limestone palette. */
+    :root {
+      --ink:#26313c;
+      --ink-soft:#4d5c6a;
+      --mute:#6b7b87;
+      --paper:#f3f5f6;
+      --paper-dark:#e8ecef;
+      --white:#fbfcfd;
+      --hair:#ccd5db;
+      --terra:#315d7e;
+      --terra-dark:#224662;
+      --sage:#29445b;
+      --bronze:#7b90a5;
+      --top-bg:#25394c;
+      --top-text:#f2f5f7;
+      --header-bg:#f3f5f6;
+      --symbol-border:#a5b8c4;
+      --button-ink:#ffffff;
+      --sage-hover:#1c3347;
+      --accent-line:#a6bdc9;
+      --image-ground:#d5dee4;
+      --coin-ground:#e1e8ec;
+      --materials-bg:#243748;
+      --materials-text:#f0f5f8;
+      --materials-soft:#d3dce3;
+      --materials-accent:#bed3df;
+      --materials-border:#607584;
+      --reading-card:#f8fafb;
+    }
+
+    /* Downloadable game materials */
+    .materials-intro-actions{display:flex;flex-wrap:wrap;gap:15px 25px;align-items:center;margin-top:25px}
+    .materials-button{display:inline-flex;gap:12px;align-items:center;color:#203545!important;background:#ecf3f6;border:1px solid #ecf3f6;padding:13px 20px;min-height:45px;text-decoration:none;font-size:13px;font-weight:700;transition:background .2s,border-color .2s}
+    .materials-button:hover{background:#fff;border-color:#fff}
+    .materials-stat{font-size:12px;color:var(--materials-soft)}
+    .materials-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px;margin-top:49px}
+    .material-group{min-width:0;padding:28px 29px 22px;border:1px solid var(--materials-border);background:rgba(255,255,255,.032)}
+    .material-group h3{font:normal 28px/1.2 Georgia,serif;margin:0 0 7px;letter-spacing:-.025em}
+    .material-group>p{color:var(--materials-soft);font-size:13px;line-height:1.65;margin:0 0 24px}
+    .material-item{padding:17px 0 17px;border-top:1px solid rgba(213,228,238,.23)}
+    .material-item-name{font-size:15px;font-weight:700;letter-spacing:.005em;line-height:1.4;margin:0 0 5px}
+    .material-item-name a{text-decoration:none;color:#fff;border-bottom:1px solid rgba(255,255,255,.55)}
+    .material-item-name a:hover{color:#d4e9f7;border-bottom-color:#d4e9f7}
+    .material-item-desc{font-size:12.5px;line-height:1.62;color:var(--materials-soft);margin:0}
+    .material-item-links{display:flex;flex-wrap:wrap;gap:13px;margin-top:9px}
+    .material-item-links a{color:#cce3f2;font-size:11px;font-weight:700;text-decoration:none;letter-spacing:.025em}
+    .material-item-links a:hover{text-decoration:underline}
+    .material-count{font:normal 12px/1.5 Arial,sans-serif;letter-spacing:.14em;text-transform:uppercase;color:#b9d2e2;margin-bottom:7px}
+    @media (max-width:700px){.materials-grid{grid-template-columns:1fr}.material-group{padding:25px 22px 15px}}
+
+    /* Licensing: consistent with the museum-style Slate & Limestone palette. */
+    .license-information{margin-top:30px;padding:23px 25px 20px;border:1px solid var(--hair);border-left:3px solid var(--terra);background:var(--paper-dark)}
+    .license-information h3{font:normal 24px/1.25 Georgia,"Iowan Old Style",serif;margin:0 0 13px;color:var(--ink)}
+    .license-information p{font-size:13px;line-height:1.75;margin:0 0 12px;color:var(--ink-soft)}
+    .license-information p:last-child{margin-bottom:0}
+    .license-information a,.footer-license a{color:var(--terra-dark);text-underline-offset:3px}
+    .license-information .license-exception{font-size:12px}
+    .footer-license{flex-basis:100%;font-size:11px;line-height:1.75;color:var(--mute);padding-top:16px;margin-top:5px;border-top:1px solid var(--hair)}
+    .footer-inner{flex-wrap:wrap}
+    @media(max-width:760px){.license-information{padding:21px 18px}.footer-license{padding-top:14px}}
+</style>
+<link rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/"/>
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+<div class="topline">A living history of philosophy · A classroom role-playing game</div>
+<header class="header">
+<div class="container header-inner">
+<a aria-label="Ancient Philosophy as a Way of Life — home" class="brand" href="#top">
+<span aria-hidden="true" class="brand-symbol">φ</span>
+<span class="brand-copy">Ancient Philosophy<span style="display:block">as a Way of Life</span><small>King Menander’s Court</small></span>
+</a>
+<button aria-controls="main-nav" aria-expanded="false" class="menu-toggle" type="button">Menu <span aria-hidden="true">☰</span></button>
+<nav aria-label="Primary navigation" class="nav" id="main-nav">
+<a href="#overview">The idea</a><a href="#schools">Four traditions</a><a href="#reading">Further reading</a><a href="#setting">The setting</a><a href="#game">How it works</a><a class="nav-feature" href="#materials">Materials</a>
+</nav>
+</div>
+</header>
+<main id="main">
+<section aria-labelledby="hero-heading" class="hero container" id="top">
+<div class="hero-inner">
+<div class="hero-copy">
+<div class="eyebrow">Philosophy · History · Role-play</div>
+<h1 id="hero-heading">How should <em>one live?</em></h1>
+<p class="hero-sub">Four ancient philosophical traditions arrive at the court of King Menander, each claiming to offer a better way of life.</p>
+<p class="hero-note">In this classroom role-playing game, students encounter Stoicism, Epicureanism, Buddhism, and Skepticism—not only as ideas to examine, but as practices to try and arguments to defend.</p>
+<div class="actions"><a class="button button-primary" href="#game">Discover the game <span aria-hidden="true">↗</span></a><a class="text-link" href="#schools">Explore the traditions <span aria-hidden="true">↗</span></a></div>
+</div>
+<div aria-label="Historical images of Buddhist and Greek antiquity" class="hero-media">
+<div class="image-frame hero-main"><img alt="Standing Buddha sculpture in the Gandharan artistic tradition" decoding="async" fetchpriority="high" loading="eager" src="images/hero-buddha.webp"/></div>
+<div class="image-frame hero-side"><img alt="The ancient Erechtheion temple on the Acropolis in Athens" decoding="async" fetchpriority="high" loading="eager" src="images/hero-athens.webp"/></div>
+<p class="hero-caption">Gandharan Buddha sculpture and the Erechtheion, Athens. Historical artworks from different periods, illustrating the traditions explored in the game. <a href="#credits">About the images</a>.</p>
+</div>
+</div>
+</section>
+<div class="editorial-strip"><div class="container strip-inner"><span>Sāgala · c. 150 BCE</span><span aria-hidden="true" class="dot">✦</span><span>Four philosophical schools</span><span aria-hidden="true" class="dot">✦</span><span>One royal court</span><span aria-hidden="true" class="dot">✦</span><span>No predetermined winner</span></div></div>
+<section aria-labelledby="overview-heading" class="section container" id="overview">
+<div class="thesis">
+<div class="section-heading"><div class="eyebrow">The central idea</div><h2 id="overview-heading">Philosophy is more than a set of propositions.</h2><p>Ancient philosophical schools asked what makes a life go well—and devised ways of thinking, living, and practicing to answer that question. Their disagreements concern happiness, virtue, suffering, desire, death, and the limits of human knowledge.</p><p style="margin-top:19px">This game invites participants to inhabit those disagreements: to make a case, test an exercise, confront an objection, and decide what survives philosophical scrutiny.</p></div>
+<aside aria-label="The philosophical question" class="thesis-quote"><blockquote>“What should I pursue? What should I fear? What is really worth caring about?”</blockquote><cite>Questions at the heart of the game</cite></aside>
+</div>
+</section>
+<section aria-labelledby="schools-heading" class="section panel" id="schools">
+<div class="container">
+<div class="section-heading"><div class="eyebrow">Four competing answers</div><h2 id="schools-heading">Four traditions. Four ways of life.</h2><p>Each school provides an account of the good life, a set of practical disciplines, and a challenge to its rivals. Open a tradition below to see what is at stake.</p></div>
+<div class="schools-grid">
+<article class="school">
+<div class="school-image"><img alt="Ancient sculpted portrait head of a bearded man" decoding="async" loading="eager" src="images/stoic-art.webp"/></div>
+<div class="school-body"><span class="school-index">01 · Athens</span><h3>Stoicism</h3><p class="school-question">Can virtue make a person happy even in misfortune?</p><p class="school-summ">Live according to reason and virtue. Examine judgments, distinguish what depends on you from what does not, and meet adversity with practical wisdom.</p><details><summary>Explore the Stoic way</summary><div class="expand-body"><p><strong>Central claim:</strong> Character, rather than fortune or wealth, is the foundation of the good life.</p><p><strong>Practice:</strong> Notice an impression before accepting its judgment; ask what an excellent response requires.</p><p><strong>Hard question:</strong> Can virtue really suffice when life brings extreme suffering or loss?</p><p class="school-resources-link"><a href="#reading-stoicism">Further reading &amp; contemporary voices →</a></p></div></details></div>
+</article>
+<article class="school">
+<div class="school-image"><img alt="Ancient marble portrait head of a bearded philosopher" decoding="async" loading="eager" src="images/epicurean-art.webp"/></div>
+<div class="school-body"><span class="school-index">02 · The Garden</span><h3>Epicureanism</h3><p class="school-question">How much do we actually need to live well?</p><p class="school-summ">Seek freedom from needless fear and distress. Value friendship, cultivate modest pleasures, and question the promises of fame and power.</p><details><summary>Explore the Epicurean way</summary><div class="expand-body"><p><strong>Central claim:</strong> Pleasure understood as a stable, undisturbed condition is the highest good.</p><p><strong>Practice:</strong> Distinguish natural and necessary desires from empty ambitions and unnecessary wants.</p><p><strong>Hard question:</strong> Can a tranquil private life meet our responsibilities to others?</p><p class="school-resources-link"><a href="#reading-epicureanism">Further reading &amp; contemporary voices →</a></p></div></details></div>
+</article>
+<article class="school">
+<div class="school-image"><img alt="Stone relief showing a seated Buddha with an attendant" decoding="async" loading="eager" src="images/buddhist-art.webp"/></div>
+<div class="school-body"><span class="school-index">03 · Northern India</span><h3>Buddhism</h3><p class="school-question">Can craving and attachment be brought to an end?</p><p class="school-summ">Examine suffering and its causes through ethical conduct, attention, and wisdom. Reflect on impermanence, non-self, and compassion.</p><details><summary>Explore the Buddhist way</summary><div class="expand-body"><p><strong>Central claim:</strong> Suffering is sustained by craving and ignorance, and liberation requires transforming how we perceive and respond.</p><p><strong>Practice:</strong> Observe the wandering mind or reflect on impermanence and attachment.</p><p><strong>Hard question:</strong> Does freedom from attachment threaten love and ordinary commitments?</p><p class="school-resources-link"><a href="#reading-buddhism">Further reading &amp; contemporary voices →</a></p></div></details></div>
+</article>
+<article class="school">
+<div class="school-image"><img alt="Four ancient sculpted philosopher heads displayed in a museum" decoding="async" loading="eager" src="images/skeptic-art.webp"/></div>
+<div class="school-body"><span class="school-index">04 · Inquiry</span><h3>Skepticism</h3><p class="school-question">What if certainty outruns our reasons?</p><p class="school-summ">Examine rival arguments fairly, expose unsupported assumptions, and withhold judgment where evidence does not warrant conviction.</p><details><summary>Explore the skeptical way</summary><div class="expand-body"><p><strong>Central claim:</strong> Intellectual humility may be wiser than premature commitment to a complete philosophical system.</p><p><strong>Practice:</strong> Formulate a cogent objection to each rival doctrine without assuming its opposite must be true.</p><p><strong>Hard question:</strong> Can one act responsibly without settling ultimate questions about the good life?</p><p class="school-resources-link"><a href="#reading-skepticism">Further reading &amp; contemporary voices →</a></p></div></details></div>
+</article>
+</div>
+<p class="art-credit">The sculptures are used as historical visual references, not as authenticated portraits of each school’s representatives. <a href="#credits">About the images</a>.</p>
+</div>
+</section><section aria-labelledby="reading-heading" class="section further-reading" id="reading">
+<div class="container">
+<div class="section-heading"><div class="eyebrow">Beyond the game</div><h2 id="reading-heading">Continue the inquiry.</h2><p>These resources offer deeper introductions, accessible books, and examples of how ancient philosophies are discussed and practiced today. Each tradition remains open to disagreement and reinterpretation.</p></div>
+<div class="further-grid"><article class="further-card" id="reading-stoicism">
+<div class="further-card-heading"><span class="school-index">01 · Further inquiry</span><h3>Stoicism</h3></div>
+<div class="further-group"><h4>Scholarly introduction</h4><ul><li><a href="https://plato.stanford.edu/entries/stoicism/" rel="noopener noreferrer" target="_blank">Stoicism · Stanford Encyclopedia of Philosophy<span aria-hidden="true"> ↗</span></a><p>A detailed account of Stoic ethics, logic, and physics.</p></li></ul></div>
+<div class="further-group"><h4>Books</h4><ul><li><a href="https://academic.oup.com/book/50088" rel="noopener noreferrer" target="_blank">A Guide to the Good Life: The Ancient Art of Stoic Joy · William B. Irvine<span aria-hidden="true"> ↗</span></a><p>Oxford University Press, 2008 · an approachable modern guide (not part of the later Guides to the Good Life series).</p></li></ul></div>
+<div class="further-group"><h4>Contemporary engagement</h4><ul><li><a href="https://modernstoicism.com/" rel="noopener noreferrer" target="_blank">Modern Stoicism<span aria-hidden="true"> ↗</span></a><p>A non-profit project offering contemporary discussion and free practical exercises.</p></li><li><a href="https://massimopigliucci.net/stoicism/" rel="noopener noreferrer" target="_blank">Massimo Pigliucci on Stoicism<span aria-hidden="true"> ↗</span></a><p>A philosopher’s account of Stoicism as a living ethical practice.</p></li></ul></div>
+</article><article class="further-card" id="reading-epicureanism">
+<div class="further-card-heading"><span class="school-index">02 · Further inquiry</span><h3>Epicureanism</h3></div>
+<div class="further-group"><h4>Scholarly introduction</h4><ul><li><a href="https://plato.stanford.edu/entries/epicurus/" rel="noopener noreferrer" target="_blank">Epicurus · Stanford Encyclopedia of Philosophy<span aria-hidden="true"> ↗</span></a><p>An introduction to the school’s ethics, atomism, and account of knowledge.</p></li></ul></div>
+<div class="further-group"><h4>Books</h4><ul><li><a href="https://academic.oup.com/book/44658" rel="noopener noreferrer" target="_blank">Living for Pleasure: An Epicurean Guide to Life · Emily A. Austin<span aria-hidden="true"> ↗</span></a><p>Oxford Guides to the Good Life · a contemporary presentation of Epicurean ethics.</p></li><li><a href="https://academic.oup.com/book/746" rel="noopener noreferrer" target="_blank">Epicureanism: A Very Short Introduction · Catherine Wilson<span aria-hidden="true"> ↗</span></a><p>Oxford University Press · a concise historical and philosophical overview.</p></li></ul></div>
+<div class="further-group"><h4>Contemporary engagement</h4><ul><li><a href="https://societyofepicurus.com/" rel="noopener noreferrer" target="_blank">Society of Friends of Epicurus<span aria-hidden="true"> ↗</span></a><p>A contemporary community of practitioners sharing readings and study materials.</p></li></ul></div>
+</article><article class="further-card" id="reading-buddhism">
+<div class="further-card-heading"><span class="school-index">03 · Further inquiry</span><h3>Buddhism</h3></div>
+<div class="further-group"><h4>Scholarly introduction</h4><ul><li><a href="https://plato.stanford.edu/entries/buddha/" rel="noopener noreferrer" target="_blank">Buddha · Stanford Encyclopedia of Philosophy<span aria-hidden="true"> ↗</span></a><p>A philosophical introduction to the early teachings, including non-self and suffering.</p></li></ul></div>
+<div class="further-group"><h4>Books</h4><ul><li><a href="https://academic.oup.com/book/36717" rel="noopener noreferrer" target="_blank">Seeing Clearly: A Buddhist Guide to Life · Nicolas Bommarito<span aria-hidden="true"> ↗</span></a><p>Oxford Guides to the Good Life · Buddhist philosophy alongside practices for daily life.</p></li></ul></div>
+<div class="further-group"><h4>Contemporary engagement</h4><ul><li><a href="https://secularbuddhistnetwork.org/" rel="noopener noreferrer" target="_blank">Secular Buddhist Network<span aria-hidden="true"> ↗</span></a><p>Contemporary secular Buddhist practice, discussion, and community.</p></li><li><a href="https://stephenbatchelor.org/publications-2/" rel="noopener noreferrer" target="_blank">Stephen Batchelor<span aria-hidden="true"> ↗</span></a><p>Books and writings developing a modern secular interpretation of Buddhist practice.</p></li></ul></div>
+</article><article class="further-card" id="reading-skepticism">
+<div class="further-card-heading"><span class="school-index">04 · Further inquiry</span><h3>Skepticism</h3></div>
+<div class="further-group"><h4>Scholarly introduction</h4><ul><li><a href="https://plato.stanford.edu/entries/skepticism-ancient/" rel="noopener noreferrer" target="_blank">Ancient Skepticism · Stanford Encyclopedia of Philosophy<span aria-hidden="true"> ↗</span></a><p>Academic and Pyrrhonian skepticism, their arguments, and their differences.</p></li></ul></div>
+<div class="further-group"><h4>Books</h4><ul><li><a href="https://www.penguinrandomhouse.com/books/806907/how-to-be-a-happy-skeptic-by-massimo-pigliucci/" rel="noopener noreferrer" target="_blank">How to Be a (Happy) Skeptic · Massimo Pigliucci<span aria-hidden="true"> ↗</span></a><p>Tarcher, 2026 · a contemporary guide grounded in Cicero’s Academic skepticism.</p></li></ul></div>
+<div class="further-group"><h4>Contemporary engagement</h4><ul><li><a href="https://aeon.co/essays/scepticism-is-a-way-of-life-that-allows-democracy-to-flourish" rel="noopener noreferrer" target="_blank">Scepticism as a way of life — Nicholas Tampio (Aeon)<span aria-hidden="true"> ↗</span></a><p>An essay on Pyrrhonian scepticism, intellectual humility, and the potential value of sceptical inquiry for democratic life.</p></li></ul></div>
+</article></div>
+<p class="further-note">The Stanford Encyclopedia entries are free to read. Book links lead to publisher information and may require purchase or library access. Contemporary authors and organizations illustrate different interpretations; their views are not official positions of the game. External links require an internet connection.</p>
+</div></section>
+<section aria-labelledby="setting-heading" class="section container" id="setting">
+<div class="setting">
+<figure class="coin-figure"><img alt="Carved Buddhist stone relief portraying a stupa surrounded by devotees" decoding="async" loading="eager" src="images/buddhist-relief.webp"/><figcaption>Carved Buddhist relief depicting a stupa and worshippers · supplied photograph, cropped from a two-panel image</figcaption></figure>
+<div><div class="eyebrow">The historical setting</div><h2 class="serif" id="setting-heading" style="font-size:clamp(37px,4vw,57px);line-height:1.13;margin:17px 0 23px">At the court of King Menander</h2><p>It is around 150 BCE. King Menander rules an Indo-Greek kingdom in northwestern South Asia. Greek and Indian intellectual traditions are part of a wider world of encounter and exchange.</p><p>Despite his military success, Menander remains troubled by a question no political victory can settle: <em>How should he live?</em> Four philosophical delegations seek to advise the king and win the court’s allegiance.</p><div class="history-note"><strong>History and invention.</strong> Menander was a historical ruler, and Greek and Indian philosophical cultures interacted in the region. The contest between these four delegations is fictional; no surviving evidence records such a gathering at his court.</div></div>
+</div>
+</section>
+<section aria-labelledby="game-heading" class="section panel" id="game">
+<div class="container">
+<div class="section-heading"><div class="eyebrow">Learning by argument and practice</div><h2 id="game-heading">How the game unfolds</h2><p>Designed around a preparation meeting and a court session, the game combines close reading, philosophical exercises, role-play, and structured debate.</p></div>
+<div class="timeline">
+<div class="step"><span class="step-num">01</span><h3>Prepare</h3><p>Participants receive characters, read their sources, and prepare arguments and questions. Factions coordinate their presentations and practices.</p></div>
+<div class="step"><span class="step-num">02</span><h3>Present</h3><p>Each philosophical school explains its way of life and leads a brief exercise designed to make its teaching concrete.</p></div>
+<div class="step"><span class="step-num">03</span><h3>Deliberate</h3><p>Court members face difficult personal dilemmas. Philosophers offer competing advice, defend their reasons, and answer objections.</p></div>
+<div class="step"><span class="step-num">04</span><h3>Judge</h3><p>Court members announce their allegiances. Menander awards patronage, and the factions assess the quality of the court’s philosophical deliberation.</p></div>
+</div>
+<div class="game-statement"><span>What matters most</span><p>The aim is not merely to win votes. It is to understand competing views well enough to use them, criticize them fairly, and ask whether a useful practice is also supported by a convincing philosophy.</p></div>
+</div>
+</section>
+<section aria-labelledby="materials-heading" class="section materials" id="materials">
+  <div class="container">
+    <div class="section-heading"><div class="eyebrow">Resources</div><h2 id="materials-heading">Game materials</h2><p>All the documents for <em>Ancient Philosophy as a Way of Life</em> are available here as printable PDFs. Read individual materials or download the complete set.</p>
+      <div class="materials-intro-actions"><a class="materials-button" href="All_Game_Materials.zip" download>Download all game materials <span aria-hidden="true">↓</span></a><span class="materials-stat">14 PDFs · Gamebook, instructor’s manual, roles, handouts, and ballots</span></div>
+    </div>
+    <div class="materials-grid"><div class="material-group"><div class="material-count">02 documents</div><h3>Gamebook &amp; teaching guide</h3><p>Begin with the gamebook; use the manual to organize and run the class.</p><div class="material-item">
+            <div class="material-item-name"><a href="materials/gamebook.pdf" target="_blank" rel="noopener noreferrer">The Gamebook <span aria-hidden="true">↗</span></a></div>
+            <p class="material-item-desc">A guide to the historical setting, four traditions, gameplay, and primary-source readings.</p>
+            <div class="material-item-links"><a href="materials/gamebook.pdf" target="_blank" rel="noopener noreferrer" aria-label="Open The Gamebook PDF">View PDF</a><a href="materials/gamebook.pdf" download aria-label="Download The Gamebook PDF">Download · 49 pages</a></div>
+        </div><div class="material-item">
+            <div class="material-item-name"><a href="materials/instructors-manual.pdf" target="_blank" rel="noopener noreferrer">Instructor’s Manual <span aria-hidden="true">↗</span></a></div>
+            <p class="material-item-desc">Teaching guidance, classroom timing, role assignments, appendices, and debriefing.</p>
+            <div class="material-item-links"><a href="materials/instructors-manual.pdf" target="_blank" rel="noopener noreferrer" aria-label="Open Instructor’s Manual PDF">View PDF</a><a href="materials/instructors-manual.pdf" download aria-label="Download Instructor’s Manual PDF">Download · 61 pages</a></div>
+        </div></div><div class="material-group"><div class="material-count">04 documents</div><h3>Philosophical faction handouts</h3><p>Four briefings on each tradition’s arguments and philosophical practices.</p><div class="material-item">
+            <div class="material-item-name"><a href="materials/stoic-faction-handout.pdf" target="_blank" rel="noopener noreferrer">Stoic Faction Handout <span aria-hidden="true">↗</span></a></div>
+            <p class="material-item-desc">Core principles, arguments, and two short philosophical practices.</p>
+            <div class="material-item-links"><a href="materials/stoic-faction-handout.pdf" target="_blank" rel="noopener noreferrer" aria-label="Open Stoic Faction Handout PDF">View PDF</a><a href="materials/stoic-faction-handout.pdf" download aria-label="Download Stoic Faction Handout PDF">Download · 3 pages</a></div>
+        </div><div class="material-item">
+            <div class="material-item-name"><a href="materials/epicurean-faction-handout.pdf" target="_blank" rel="noopener noreferrer">Epicurean Faction Handout <span aria-hidden="true">↗</span></a></div>
+            <p class="material-item-desc">Pleasure, friendship, death, and two short philosophical practices.</p>
+            <div class="material-item-links"><a href="materials/epicurean-faction-handout.pdf" target="_blank" rel="noopener noreferrer" aria-label="Open Epicurean Faction Handout PDF">View PDF</a><a href="materials/epicurean-faction-handout.pdf" download aria-label="Download Epicurean Faction Handout PDF">Download · 3 pages</a></div>
+        </div><div class="material-item">
+            <div class="material-item-name"><a href="materials/buddhist-faction-handout.pdf" target="_blank" rel="noopener noreferrer">Buddhist Faction Handout <span aria-hidden="true">↗</span></a></div>
+            <p class="material-item-desc">Suffering, not-self, compassion, and two short philosophical practices.</p>
+            <div class="material-item-links"><a href="materials/buddhist-faction-handout.pdf" target="_blank" rel="noopener noreferrer" aria-label="Open Buddhist Faction Handout PDF">View PDF</a><a href="materials/buddhist-faction-handout.pdf" download aria-label="Download Buddhist Faction Handout PDF">Download · 3 pages</a></div>
+        </div><div class="material-item">
+            <div class="material-item-name"><a href="materials/skeptic-faction-handout.pdf" target="_blank" rel="noopener noreferrer">Skeptic Faction Handout <span aria-hidden="true">↗</span></a></div>
+            <p class="material-item-desc">Skeptical inquiry and an exercise in developing serious objections.</p>
+            <div class="material-item-links"><a href="materials/skeptic-faction-handout.pdf" target="_blank" rel="noopener noreferrer" aria-label="Open Skeptic Faction Handout PDF">View PDF</a><a href="materials/skeptic-faction-handout.pdf" download aria-label="Download Skeptic Faction Handout PDF">Download · 2 pages</a></div>
+        </div></div><div class="material-group"><div class="material-count">05 documents</div><h3>Character role sheets</h3><p>Distribute the appropriate private role sheets to each player.</p><div class="material-item">
+            <div class="material-item-name"><a href="materials/court-role-sheets.pdf" target="_blank" rel="noopener noreferrer">Court Role Sheets <span aria-hidden="true">↗</span></a></div>
+            <p class="material-item-desc">Characters and responsibilities for members of Menander’s court.</p>
+            <div class="material-item-links"><a href="materials/court-role-sheets.pdf" target="_blank" rel="noopener noreferrer" aria-label="Open Court Role Sheets PDF">View PDF</a><a href="materials/court-role-sheets.pdf" download aria-label="Download Court Role Sheets PDF">Download · 22 pages</a></div>
+        </div><div class="material-item">
+            <div class="material-item-name"><a href="materials/stoic-role-sheets.pdf" target="_blank" rel="noopener noreferrer">Stoic Role Sheets <span aria-hidden="true">↗</span></a></div>
+            <p class="material-item-desc">Private character backgrounds and objectives for the Stoic delegation.</p>
+            <div class="material-item-links"><a href="materials/stoic-role-sheets.pdf" target="_blank" rel="noopener noreferrer" aria-label="Open Stoic Role Sheets PDF">View PDF</a><a href="materials/stoic-role-sheets.pdf" download aria-label="Download Stoic Role Sheets PDF">Download · 10 pages</a></div>
+        </div><div class="material-item">
+            <div class="material-item-name"><a href="materials/epicurean-role-sheets.pdf" target="_blank" rel="noopener noreferrer">Epicurean Role Sheets <span aria-hidden="true">↗</span></a></div>
+            <p class="material-item-desc">Private character backgrounds and objectives for the Epicurean delegation.</p>
+            <div class="material-item-links"><a href="materials/epicurean-role-sheets.pdf" target="_blank" rel="noopener noreferrer" aria-label="Open Epicurean Role Sheets PDF">View PDF</a><a href="materials/epicurean-role-sheets.pdf" download aria-label="Download Epicurean Role Sheets PDF">Download · 10 pages</a></div>
+        </div><div class="material-item">
+            <div class="material-item-name"><a href="materials/buddhist-role-sheets.pdf" target="_blank" rel="noopener noreferrer">Buddhist Role Sheets <span aria-hidden="true">↗</span></a></div>
+            <p class="material-item-desc">Private character backgrounds and objectives for the Buddhist delegation.</p>
+            <div class="material-item-links"><a href="materials/buddhist-role-sheets.pdf" target="_blank" rel="noopener noreferrer" aria-label="Open Buddhist Role Sheets PDF">View PDF</a><a href="materials/buddhist-role-sheets.pdf" download aria-label="Download Buddhist Role Sheets PDF">Download · 12 pages</a></div>
+        </div><div class="material-item">
+            <div class="material-item-name"><a href="materials/skeptic-role-sheets.pdf" target="_blank" rel="noopener noreferrer">Skeptic Role Sheets <span aria-hidden="true">↗</span></a></div>
+            <p class="material-item-desc">Private character backgrounds and objectives for the Skeptic delegation.</p>
+            <div class="material-item-links"><a href="materials/skeptic-role-sheets.pdf" target="_blank" rel="noopener noreferrer" aria-label="Open Skeptic Role Sheets PDF">View PDF</a><a href="materials/skeptic-role-sheets.pdf" download aria-label="Download Skeptic Role Sheets PDF">Download · 10 pages</a></div>
+        </div></div><div class="material-group"><div class="material-count">03 documents</div><h3>Court materials &amp; ballots</h3><p>Printable dilemmas and ballots for the court’s final decisions and ratings.</p><div class="material-item">
+            <div class="material-item-name"><a href="materials/dilemmas.pdf" target="_blank" rel="noopener noreferrer">Dilemma Cards <span aria-hidden="true">↗</span></a></div>
+            <p class="material-item-desc">Printable dilemmas confronting court members.</p>
+            <div class="material-item-links"><a href="materials/dilemmas.pdf" target="_blank" rel="noopener noreferrer" aria-label="Open Dilemma Cards PDF">View PDF</a><a href="materials/dilemmas.pdf" download aria-label="Download Dilemma Cards PDF">Download · 9 pages</a></div>
+        </div><div class="material-item">
+            <div class="material-item-name"><a href="materials/court-ballots.pdf" target="_blank" rel="noopener noreferrer">Court Ballots <span aria-hidden="true">↗</span></a></div>
+            <p class="material-item-desc">Allegiance ballots for court members and royal patronage ballot for Menander.</p>
+            <div class="material-item-links"><a href="materials/court-ballots.pdf" target="_blank" rel="noopener noreferrer" aria-label="Open Court Ballots PDF">View PDF</a><a href="materials/court-ballots.pdf" download aria-label="Download Court Ballots PDF">Download · 6 pages</a></div>
+        </div><div class="material-item">
+            <div class="material-item-name"><a href="materials/faction-ballots.pdf" target="_blank" rel="noopener noreferrer">Faction Ballots <span aria-hidden="true">↗</span></a></div>
+            <p class="material-item-desc">Four faction rating ballots for the court’s philosophical deliberation.</p>
+            <div class="material-item-links"><a href="materials/faction-ballots.pdf" target="_blank" rel="noopener noreferrer" aria-label="Open Faction Ballots PDF">View PDF</a><a href="materials/faction-ballots.pdf" download aria-label="Download Faction Ballots PDF">Download · 2 pages</a></div>
+        </div></div></div>
+  </div>
+</section>
+<section aria-labelledby="about-heading" class="section container" id="about">
+<div class="about-grid">
+<div><div class="eyebrow">About this project</div><h2 class="serif" id="about-heading" style="font-size:clamp(36px,4vw,54px);line-height:1.15;margin:19px 0 24px">Philosophy, understood as something one does.</h2><p><em>Ancient Philosophy as a Way of Life</em> is an educational role-playing game intended to make ancient ethical thought intellectually demanding, historically situated, and personally engaging.</p><p>The central pedagogical wager is simple: philosophical claims become more vivid when students must defend them against serious objections—and put them into practice, even briefly.</p><p class="reacting-credit">This game is inspired by <a href="https://reactingconsortium.org/" rel="noopener noreferrer" target="_blank">Reacting to the Past</a>, a role-playing approach to teaching in which students take on historical roles, study primary sources, and debate consequential questions. <em>Ancient Philosophy as a Way of Life</em> adapts that approach for a short, philosophy-centered classroom experience. It is an independent project, not an official Reacting to the Past publication.</p>
+<div class="license-information" id="license">
+  <h3>License &amp; reuse</h3>
+  <p>© 2026 Javier Hidalgo. Except where otherwise noted, the original writing on this website and the original game materials authored by Javier Hidalgo are licensed under the <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="license noopener noreferrer" target="_blank">Creative Commons Attribution–NonCommercial–ShareAlike 4.0 International (CC BY-NC-SA 4.0)</a> license.</p>
+  <p>You may copy, share, and adapt this original material for noncommercial purposes, provided you credit the author, identify any changes, and distribute adaptations under the same license.</p>
+  <p class="license-exception"><strong>Third-party materials:</strong> Historical photographs, illustrations, credited quotations, source translations, and other content created by third parties are not covered by this license unless separately indicated. Their original licenses and permissions apply.</p>
+</div></div>
+<div class="credits" id="credits"><h3>Historical images</h3><p>The photographs depict ancient sculptures, reliefs, and architecture associated with the Greek and South Asian worlds. They are visual references, not reconstructions of the fictional meeting at Menander’s court.</p><ol class="credits-list"><li>Standing Buddha, Gandharan artistic tradition</li><li>The Erechtheion, Athens</li><li>Sculpted portrait accompanying Stoicism</li><li>Marble portrait accompanying Epicureanism</li><li>Buddhist stone relief accompanying Buddhism</li><li>Sculpted heads accompanying Skepticism</li><li>Buddhist relief with a stupa and devotees</li></ol><p>Photographs are used to evoke the traditions and their historical settings; they do not claim to portray the fictional philosophical delegates.</p></div>
+</div>
+</section>
+</main>
+<footer class="footer"><div class="container footer-inner"><div class="footer-title">Ancient Philosophy as a Way of Life</div><div class="footer-note">A teaching resource on Stoicism, Epicureanism, Buddhism, and Skepticism. Designed to foster careful reading, practical reflection, and philosophical argument. Inspired by <a href="https://reactingconsortium.org/" rel="noopener noreferrer" target="_blank">Reacting to the Past</a>.</div><div class="footer-license">© 2026 Javier Hidalgo · Original content licensed <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="license noopener noreferrer" target="_blank">CC BY-NC-SA 4.0</a><span class="footer-license-exception"> · Third-party imagery and source texts excluded.</span></div></div></footer>
+<script>
+    (function(){
+      const button = document.querySelector('.menu-toggle');
+      const nav = document.querySelector('.nav');
+      if(button && nav){
+        button.addEventListener('click', () => {const open = nav.classList.toggle('open');button.setAttribute('aria-expanded',String(open));button.innerHTML = (open?'Close <span aria-hidden="true">×</span>':'Menu <span aria-hidden="true">☰</span>');});
+        nav.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{nav.classList.remove('open');button.setAttribute('aria-expanded','false');button.innerHTML='Menu <span aria-hidden="true">☰</span>';}));
+      }
+      if('IntersectionObserver' in window){
+        const links=[...document.querySelectorAll('.nav a[href^="#"]')];
+        const io=new IntersectionObserver((entries)=>{for(const e of entries){if(e.isIntersecting){links.forEach(a=>a.classList.toggle('active',a.getAttribute('href')==='#'+e.target.id));}}},{rootMargin:'-25% 0px -65% 0px'});
+        document.querySelectorAll('main section[id]').forEach(el=>io.observe(el));
+      }
+
+    })();
+</script>
+
+</body>
+</html>
